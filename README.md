@@ -57,6 +57,10 @@ A few honest reflections:
 
 3. **The threshold matters as much as the model.** The default 0.5 threshold isn't always right. For churn prediction, tuning it lower to prioritize recall made a meaningful difference.
 
+## Personal Website
+
+Last time my personal website had some access issues during the interview — I've since fixed and updated it with new content. Feel free to take a look: [shirely5752.github.io/Tangtang-UI](https://shirely5752.github.io/Tangtang-UI/#/)
+
 ## Tools Used
 
 The coding part of this project was done with the help of Amazon Q Developer (agentic AI) in VS Code. I used it to speed up the pipeline development — writing scripts, debugging, and iterating on the analysis. The thinking, methodology decisions, and interpretation of results are my own.
