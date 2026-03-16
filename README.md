@@ -4,7 +4,7 @@
 
 This project was done as part of a Junior Data Scientist interview preparation for Paradox Interactive. The task was to analyze player churn — figuring out why players stop playing and how to predict it.
 
-I used a public dataset ([Online Gaming Behavior Dataset](https://www.kaggle.com/)) as a proxy since I didn't have access to real Paradox data. The dataset has ~40k player records with behavioral features like session frequency, play time, and engagement levels.
+I used a public dataset ([Online Gaming Behavior Dataset](https://www.kaggle.com/datasets/rabieelkharoua/predict-online-gaming-behavior-dataset)) as a proxy since I didn't have access to real Paradox data. The dataset has ~40k player records with behavioral features like session frequency, play time, and engagement levels.
 
 One thing I want to be upfront about: this dataset is simulated, and the data is quite "clean" — no missing values, no outliers, and many features turned out to be randomly distributed. That limited some of the analysis, but I think the value here is in the methodology and thought process rather than the specific numbers.
 
