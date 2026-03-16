@@ -84,3 +84,19 @@ The interview task specified these player features. Here's how they map to the d
 | Total lifetime playtime | PlayTimeHours | Partial |
 
 The biggest gap is "Time since last login" — the dataset doesn't have this, which means I couldn't define churn the traditional way (e.g., 28 days inactive). This is noted as a limitation.
+
+## A Note on Data Roles
+
+During my last interview, I mixed up some of the data role terminology — I think it had to do with how my university courses were named. For example, one of my courses covered ML deployment and pipeline orchestration but was called "Data Engineering," which blurred the lines for me.
+
+After studying for the dbt Fundamentals certification and spending more time in the Snowflake ecosystem, I now have a much clearer picture of how these roles fit together in practice:
+
+![Data Roles Pipeline](plots/data_roles_pipeline.png)
+
+- **Data Engineer** — builds the pipelines that move raw data (logs, APIs, files) into the warehouse
+- **Analytics Engineer** — models and standardizes the data using tools like dbt, so everyone in the company sees the same numbers
+- **Data Analyst** — creates dashboards and reports from the clean tables, tells the business what happened
+- **Data Scientist** — builds ML models to predict what will happen next, experiments in notebooks
+- **ML Engineer** — takes the DS's prototype model and deploys it to production with Docker, CI/CD, and K8s
+
+The key distinction I missed before: DS cares about "is the model accurate?", MLE cares about "is it stable in production?" They're complementary, not the same thing.
