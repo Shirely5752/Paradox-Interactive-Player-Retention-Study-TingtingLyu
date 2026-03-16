@@ -91,12 +91,35 @@ During my last interview, I mixed up some of the data role terminology — I thi
 
 After studying for the dbt Fundamentals certification and spending more time in the Snowflake ecosystem, I now have a much clearer picture of how these roles fit together in practice:
 
-![Data Roles Pipeline](plots/data_roles_pipeline.png)
+```mermaid
+graph TD
+    subgraph DE_Lane [Data Engineer]
+        A((Start)) --> B[Extract raw data - logs, XML, APIs]
+        B --> C[(Snowflake Raw Layer)]
+    end
 
-- **Data Engineer** — builds the pipelines that move raw data (logs, APIs, files) into the warehouse
-- **Analytics Engineer** — models and standardizes the data using tools like dbt, so everyone in the company sees the same numbers
-- **Data Analyst** — creates dashboards and reports from the clean tables, tells the business what happened
-- **Data Scientist** — builds ML models to predict what will happen next, experiments in notebooks
-- **ML Engineer** — takes the DS's prototype model and deploys it to production with Docker, CI/CD, and K8s
+    subgraph AE_Lane [Analytics Engineer]
+        C --> D[dbt modeling & metric definitions]
+        D --> E[(Snowflake Standardized Layer)]
+    end
+
+    subgraph DA_Lane [Data Analyst]
+        E --> F[BI reports & dashboards]
+        F --> G1((Decision Support))
+    end
+
+    subgraph DS_Lane [Data Scientist]
+        E --> H[ML model prototyping & prediction]
+    end
+
+    subgraph MLE_Lane [ML Engineer]
+        H --> I[Docker containerization]
+        I --> J[CI/CD & K8s deployment]
+        J --> G2((Automated Service))
+    end
+
+    J -.->|Model drift feedback| H
+    J -.->|Data quality feedback| D
+```
 
 The key distinction I missed before: DS cares about "is the model accurate?", MLE cares about "is it stable in production?" They're complementary, not the same thing.
